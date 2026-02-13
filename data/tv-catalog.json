@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "shows": {
+    "ten year old tom": {
+      "app": "com.wbd.stream",
+      "appName": "Max",
+      "title": "Ten Year Old Tom",
+      "lastPlayed": "2026-02-13",
+      "lastSeason": 1,
+      "lastEpisode": 10,
+      "aliases": ["tom", "tyo tom", "ten year old tom"],
+      "deepLink": null,
+      "navSequence": {
+        "fromHome": "launch app → wait 8s → ENTER (profile) → wait 5s → already on show page → ENTER (resume)",
+        "steps": [
+          {"action": "launch", "package": "com.wbd.stream", "waitMs": 8000},
+          {"action": "key", "key": "ENTER", "note": "select profile", "waitMs": 5000},
+          {"action": "key", "key": "ENTER", "note": "resume playback", "waitMs": 2000}
+        ],
+        "confidence": 0.7,
+        "timesUsed": 1,
+        "lastUsed": "2026-02-13"
+      }
+    }
+  },
+  "appPatterns": {
+    "com.wbd.stream": {
+      "name": "Max",
+      "hasProfilePicker": true,
+      "profileName": "Jorge",
+      "profilePosition": "first",
+      "profileAction": "ENTER",
+      "searchNav": {
+        "fromHome": ["LEFT", "UP", "UP", "UP", "ENTER"],
+        "confidence": 0.5,
+        "timesUsed": 0
+      },
+      "loadTimeMs": 8000,
+      "searchLoadTimeMs": 3000,
+      "quirks": ["slow to load", "profile picker on every cold start"]
+    },
+    "com.netflix.ninja": {
+      "name": "Netflix",
+      "hasProfilePicker": true,
+      "profileName": "Jorge",
+      "profilePosition": "unknown",
+      "profileAction": "ENTER",
+      "searchNav": {
+        "fromHome": ["LEFT", "UP", "ENTER"],
+        "confidence": 0.3,
+        "timesUsed": 0
+      },
+      "loadTimeMs": 8000,
+      "searchLoadTimeMs": 3000,
+      "quirks": ["steals focus on some TVs", "force-stop if interfering"]
+    }
+  }
+}

@@ -89,19 +89,45 @@ scripts/tv-remote.sh $TV apps
 
 ## 🧠 How It Works
 
-TV UIs can't be scraped like web pages. This skill uses a **screenshot-navigate loop**:
+### The Learning Loop
+
+The skill starts slow and gets fast. First time playing a show, it uses a screenshot-navigate loop. Every successful navigation is saved. Next time, it replays the exact sequence instantly.
 
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│  Screenshot  │────▶│   Analyze   │────▶│  Navigate   │
-│   TV screen  │     │  with vision│     │  via ADB    │
-└─────────────┘     └─────────────┘     └──────┬──────┘
-       ▲                                        │
-       └────────────────────────────────────────┘
-                    repeat until done
+First time:                          After learning:
+┌────────────┐                       ┌────────────┐
+│ Screenshot │──┐                    │  "play tom" │
+│  TV screen │  │                    └──────┬─────┘
+└────────────┘  │                           │
+       ▲        ▼                    ┌──────▼──────┐
+       │  ┌───────────┐             │ Replay saved │
+       │  │  Analyze  │             │  sequence    │
+       │  │ with vision│             │  (3 steps)  │
+       │  └─────┬─────┘             └──────┬──────┘
+       │        ▼                           │
+       │  ┌───────────┐                    ▼
+       │  │ Navigate  │              ▶ Playing in 15s
+       │  │  via ADB  │
+       │  └─────┬─────┘
+       │        │
+       └────────┘
+    ~2 min first time
 ```
 
-The AI sees exactly what you'd see on the TV, figures out where things are, and sends the right button presses to get there. No guessing.
+### Confidence System
+
+Each show in the catalog has a confidence score (0.0 → 1.0) that increases with successful plays:
+
+- **Low confidence** → execute sequence + verify with screenshots
+- **High confidence** → execute blind, no verification needed
+- **Failed?** → fall back to screenshot loop, fix and re-save
+
+### Catalog Growth
+
+Everything is stored in `data/tv-catalog.json`:
+- **Shows**: title, app, aliases, deep links, navigation sequences, play history
+- **App patterns**: profile picker behavior, search paths, load times — transfers to new shows on the same app
+- The more you use it, the faster it gets. First play = slow. Fifth play = instant.
 
 ## 📦 Supported Apps
 

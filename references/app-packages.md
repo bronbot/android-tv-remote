@@ -18,6 +18,7 @@
 | Twitch | tv.twitch.android.app |
 | Tubi | com.tubitv |
 | Pluto TV | tv.pluto.android |
+| Stremio | com.stremio.one |
 
 # Profile Selection Behavior
 

@@ -107,7 +107,7 @@ The AI sees exactly what you'd see on the TV, figures out where things are, and 
 
 Full list in [`references/app-packages.md`](references/app-packages.md):
 
-> Netflix · Max · Disney+ · Hulu · Prime Video · YouTube · YouTube TV · Peacock · Paramount+ · Apple TV+ · Crunchyroll · Plex · Spotify · Twitch · Tubi · Pluto TV
+> Netflix · Max · Disney+ · Hulu · Prime Video · YouTube · YouTube TV · Peacock · Paramount+ · Apple TV+ · Crunchyroll · Plex · Spotify · Twitch · Tubi · Pluto TV · Stremio
 
 ## 💡 Tips
 

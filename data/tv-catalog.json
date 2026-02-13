@@ -8,16 +8,85 @@
       "lastPlayed": "2026-02-13",
       "lastSeason": 1,
       "lastEpisode": 10,
-      "aliases": ["tom", "tyo tom", "ten year old tom"],
+      "aliases": [
+        "tom",
+        "tyo tom",
+        "ten year old tom"
+      ],
       "deepLink": null,
       "navSequence": {
-        "fromHome": "launch app → wait 8s → ENTER (profile) → wait 5s → already on show page → ENTER (resume)",
+        "fromHome": "launch app \u2192 wait 8s \u2192 ENTER (profile) \u2192 wait 5s \u2192 already on show page \u2192 ENTER (resume)",
         "steps": [
-          {"action": "launch", "package": "com.wbd.stream", "waitMs": 8000},
-          {"action": "key", "key": "ENTER", "note": "select profile", "waitMs": 5000},
-          {"action": "key", "key": "ENTER", "note": "resume playback", "waitMs": 2000}
+          {
+            "action": "launch",
+            "package": "com.wbd.stream",
+            "waitMs": 8000
+          },
+          {
+            "action": "key",
+            "key": "ENTER",
+            "note": "select profile",
+            "waitMs": 5000
+          },
+          {
+            "action": "key",
+            "key": "ENTER",
+            "note": "resume playback",
+            "waitMs": 2000
+          }
         ],
         "confidence": 0.7,
+        "timesUsed": 1,
+        "lastUsed": "2026-02-13"
+      }
+    },
+    "common side effects": {
+      "app": "com.amazon.amazonvideo.livingroom",
+      "appName": "Prime Video",
+      "title": "Common Side Effects",
+      "lastPlayed": "2026-02-13",
+      "lastSeason": 1,
+      "lastEpisode": 1,
+      "aliases": [
+        "common side effects",
+        "cse",
+        "side effects"
+      ],
+      "deepLink": null,
+      "navSequence": {
+        "fromHome": "SEARCH key \u2192 type query \u2192 ENTER \u2192 scroll up to E1 \u2192 ENTER",
+        "steps": [
+          {
+            "action": "key",
+            "key": "HOME",
+            "note": "go home",
+            "waitMs": 2000
+          },
+          {
+            "action": "key",
+            "key": "SEARCH",
+            "note": "open google TV search",
+            "waitMs": 3000
+          },
+          {
+            "action": "type",
+            "text": "common side effects",
+            "waitMs": 1000
+          },
+          {
+            "action": "key",
+            "key": "ENTER",
+            "note": "submit search",
+            "waitMs": 5000
+          },
+          {
+            "action": "key",
+            "key": "ENTER",
+            "note": "select show/resume",
+            "waitMs": 2000
+          }
+        ],
+        "confidence": 0.5,
         "timesUsed": 1,
         "lastUsed": "2026-02-13"
       }
@@ -31,13 +100,22 @@
       "profilePosition": "first",
       "profileAction": "ENTER",
       "searchNav": {
-        "fromHome": ["LEFT", "UP", "UP", "UP", "ENTER"],
+        "fromHome": [
+          "LEFT",
+          "UP",
+          "UP",
+          "UP",
+          "ENTER"
+        ],
         "confidence": 0.5,
         "timesUsed": 0
       },
       "loadTimeMs": 8000,
       "searchLoadTimeMs": 3000,
-      "quirks": ["slow to load", "profile picker on every cold start"]
+      "quirks": [
+        "slow to load",
+        "profile picker on every cold start"
+      ]
     },
     "com.netflix.ninja": {
       "name": "Netflix",
@@ -46,13 +124,45 @@
       "profilePosition": "unknown",
       "profileAction": "ENTER",
       "searchNav": {
-        "fromHome": ["LEFT", "UP", "ENTER"],
+        "fromHome": [
+          "LEFT",
+          "UP",
+          "ENTER"
+        ],
         "confidence": 0.3,
         "timesUsed": 0
       },
       "loadTimeMs": 8000,
       "searchLoadTimeMs": 3000,
-      "quirks": ["steals focus on some TVs", "force-stop if interfering"]
+      "quirks": [
+        "steals focus on some TVs",
+        "force-stop if interfering"
+      ]
+    },
+    "com.amazon.amazonvideo.livingroom": {
+      "name": "Prime Video",
+      "hasProfilePicker": true,
+      "profileName": "Lucy",
+      "profilePosition": "first",
+      "profileAction": "ENTER",
+      "searchNav": {
+        "fromHome": [
+          "LEFT",
+          "LEFT",
+          "UP",
+          "ENTER"
+        ],
+        "confidence": 0.5,
+        "timesUsed": 1,
+        "note": "prime search blocked ADB text input, use google TV global search instead"
+      },
+      "loadTimeMs": 10000,
+      "searchLoadTimeMs": 4000,
+      "quirks": [
+        "ADB text input does not work in Prime search",
+        "use KEYCODE_SEARCH for google TV global search instead",
+        "slow to load after profile selection"
+      ]
     }
   }
 }

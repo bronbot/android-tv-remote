@@ -90,6 +90,45 @@
         "timesUsed": 1,
         "lastUsed": "2026-02-13"
       }
+    },
+    "succession": {
+      "app": "com.wbd.stream",
+      "appName": "Max",
+      "title": "Succession",
+      "lastPlayed": "2026-02-13",
+      "lastSeason": 1,
+      "lastEpisode": 1,
+      "aliases": [
+        "succession",
+        "succ"
+      ],
+      "deepLink": null,
+      "navSequence": {
+        "fromHome": "launch max \u2192 profile Jorge \u2192 search \u2192 type succession \u2192 select result \u2192 season 1 \u2192 E1",
+        "steps": [
+          {
+            "action": "launch",
+            "package": "com.wbd.stream",
+            "waitMs": 10000
+          },
+          {
+            "action": "key",
+            "key": "ENTER",
+            "note": "select Jorge profile",
+            "waitMs": 8000
+          },
+          {
+            "action": "key",
+            "key": "SEARCH",
+            "note": "this gets intercepted by google TV - need to use deep link instead",
+            "waitMs": 3000
+          }
+        ],
+        "confidence": 0.3,
+        "timesUsed": 1,
+        "lastUsed": "2026-02-13",
+        "notes": "Max search works with ADB text input. Navigate: left sidebar top icon = search. KEYCODE_SEARCH opens google assistant instead. Use deep link am start -a VIEW -d https://play.max.com/search?q=succession -p com.wbd.stream to go straight to search."
+      }
     }
   },
   "appPatterns": {
@@ -100,15 +139,11 @@
       "profilePosition": "first",
       "profileAction": "ENTER",
       "searchNav": {
-        "fromHome": [
-          "LEFT",
-          "UP",
-          "UP",
-          "UP",
-          "ENTER"
-        ],
-        "confidence": 0.5,
-        "timesUsed": 0
+        "method": "deep-link",
+        "template": "am start -a android.intent.action.VIEW -d 'https://play.max.com/search?q={query}' -p com.wbd.stream",
+        "confidence": 0.7,
+        "timesUsed": 1,
+        "note": "deep link opens Max search page directly, ADB text input works in Max search keyboard"
       },
       "loadTimeMs": 8000,
       "searchLoadTimeMs": 3000,

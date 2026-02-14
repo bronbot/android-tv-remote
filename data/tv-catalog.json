@@ -139,11 +139,16 @@
       "profilePosition": "first",
       "profileAction": "ENTER",
       "searchNav": {
-        "method": "deep-link",
-        "template": "am start -a android.intent.action.VIEW -d 'https://play.max.com/search?q={query}' -p com.wbd.stream",
-        "confidence": 0.7,
-        "timesUsed": 1,
-        "note": "deep link opens Max search page directly, ADB text input works in Max search keyboard"
+        "method": "sidebar",
+        "fromHome": [
+          "UP to search icon (top of left sidebar)",
+          "ENTER to open search",
+          "type query"
+        ],
+        "deepLinkAlternative": "am start -a android.intent.action.VIEW -d 'https://play.max.com/search?q={query}' -p com.wbd.stream",
+        "confidence": 0.8,
+        "timesUsed": 2,
+        "notes": "DO NOT use KEYCODE_SEARCH - opens google assistant. Navigate within the app sidebar instead. Search icon is the magnifying glass at the very top of the left sidebar."
       },
       "loadTimeMs": 8000,
       "searchLoadTimeMs": 3000,
